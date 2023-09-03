@@ -2,7 +2,6 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 
 const app = express();
-
 var buffer = ["null", "null", "null", "null", "null", "null", "null", "null", "null", "null"];
 
 async function logar_site() {
