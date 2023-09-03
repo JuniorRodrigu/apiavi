@@ -1,0 +1,39 @@
+const puppeteer = require('puppeteer');
+
+async function logar_site() {
+  const user = '';
+  const password = '';
+
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+  
+  await page.goto('https://www.royalbets.vip/home/events-area');
+  await page.waitForTimeout(10000);
+  // Clique no botão de aceitar cookies
+  await page.click('.cookies-accept-button');
+  
+  // Aguarde 5 segundos para a página carregar completamente
+ 
+  
+  // Clique no botão de entrada
+  await page.click('.login-btn');
+  
+  // Aguarde os campos de usuário e senha aparecerem
+  await page.waitForSelector('[formcontrolname="username"]');
+  await page.waitForSelector('[formcontrolname="password"]');
+  
+  // Preencha os campos de usuário e senha
+  await page.type('[formcontrolname="username"]', user);
+  await page.waitForTimeout(1000);
+  await page.type('[formcontrolname="password"]', password);
+  
+  // Clique no botão de login
+  await page.click('.confirm');
+  
+  // Aguarde a página carregar após o login
+  await page.waitForNavigation();
+  
+  console.log('Login efetuado com sucesso!');
+}
+
+logar_site();
